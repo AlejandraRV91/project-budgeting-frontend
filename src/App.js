@@ -24,13 +24,13 @@ function App() {
 						path="/transactions/:index"
 						element={<ShowPage></ShowPage>}></Route>
 					<Route
-						path="/transactions/:index/edit"
-						element={<></>}></Route>
-					<Route
 						path="/transactions/new"
 						element={
 							<NewTransactionPage></NewTransactionPage>
 						}></Route>
+					<Route
+						path="/transactions/:index/edit"
+						element={<></>}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>
