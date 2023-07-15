@@ -1,11 +1,12 @@
+/** @format */
 
-import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
 	return (
 		<nav>
 			<span>Budget App</span>
-			<button>NEW TRANSACTION</button>
+			<Link to="/transactions/new">NEW TRANSACTION</Link>
 		</nav>
 	);
 }
