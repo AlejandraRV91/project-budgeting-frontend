@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import IndexPage from "./components/IndexPage";
 import ShowPage from "./components/ShowPage";
 import NewTransactionPage from "./components/NewTransactionPage";
+import EditPage from "./components/EditPage";
 
 function App() {
 	return (
@@ -16,7 +17,6 @@ function App() {
 				<Navbar />
 				<Routes>
 					<Route path="*" element={<NotFound />} />
-					<Route path="/" element={<></>}></Route>
 					<Route
 						path="/transactions"
 						element={<IndexPage></IndexPage>}></Route>
@@ -30,7 +30,7 @@ function App() {
 						}></Route>
 					<Route
 						path="/transactions/:index/edit"
-						element={<></>}></Route>
+						element={<EditPage></EditPage>}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>

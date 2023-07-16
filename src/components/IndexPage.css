@@ -1,0 +1,23 @@
+.total-balance {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.greenish {
+    background-color: #a8e6c3;
+    color: #333;
+}
+
+.yellowish {
+    background-color: #f6e58d;
+    color: #333;
+}
+
+.reddish {
+    background-color: #ffcccc;
+    color: #333;
+}

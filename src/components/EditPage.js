@@ -1,42 +1,55 @@
 /** @format */
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-function NewTransactionPage() {
+function EditPage() {
+	const { index } = useParams();
 	const [item_name, setItemName] = useState("");
 	const [amount, setAmount] = useState("");
 	const [date, setDate] = useState("");
 	const [from, setFrom] = useState("");
 	const [category, setCategory] = useState("");
-	const [isWithdrawal, setIsWithdrawal] = useState(false); 
 	const apiUrl = process.env.REACT_APP_API_DEV;
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		fetch(`${apiUrl}/transactions/${index}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setItemName(data.item_name);
+				setAmount(data.amount);
+				setDate(data.date);
+				setFrom(data.from);
+				setCategory(data.category);
+			})
+			.catch((error) => {
+				console.error("Error fetching resource:", error);
+			});
+	}, [apiUrl, index]);
+
 	function handleSubmit(e) {
 		e.preventDefault();
-		const id = Date.now();
-		const newResource = {
-			id,
+		const updatedResource = {
 			item_name,
-			amount: isWithdrawal ? -Math.abs(amount) : Math.abs(amount), 
+			amount,
 			date,
 			from,
 			category,
 		};
 
-		fetch(`${apiUrl}/transactions`, {
-			method: "POST",
+		fetch(`${apiUrl}/transactions/${index}`, {
+			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(newResource),
+			body: JSON.stringify(updatedResource),
 		})
 			.then((response) => {
-				if (response.status === 201) {
-					navigate("/transactions/" + id);
+				if (response.status === 200) {
+					navigate(`/transactions/${index}`);
 				} else {
-					console.error("Error creating resource");
+					console.error("Error updating resource");
 				}
 			})
 			.catch((error) => {
@@ -46,7 +59,7 @@ function NewTransactionPage() {
 
 	return (
 		<div>
-			<h2>Create New Transaction</h2>
+			<h2>Edit Resource</h2>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="item-name">Item Name:</label>
 				<input
@@ -89,20 +102,10 @@ function NewTransactionPage() {
 					onChange={(e) => setCategory(e.target.value)}
 				/>
 
-				<div>
-					<input
-						id="is-withdrawal"
-						type="checkbox"
-						checked={isWithdrawal}
-						onChange={(e) => setIsWithdrawal(e.target.checked)}
-					/>
-					<label htmlFor="is-withdrawal">Withdrawal</label>
-				</div>
-
-				<button type="submit">Create</button>
+				<button type="submit">Update</button>
 			</form>
 		</div>
 	);
 }
 
-export default NewTransactionPage;
+export default EditPage;

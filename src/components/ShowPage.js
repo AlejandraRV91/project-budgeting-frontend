@@ -1,12 +1,13 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 function ShowPage() {
 	const { index } = useParams();
 	const [resource, setResource] = useState(null);
-	let apiUrl = process.env.REACT_APP_API_DEV;
+	const apiUrl = process.env.REACT_APP_API_DEV;
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch(`${apiUrl}/transactions/${index}`)
@@ -17,8 +18,23 @@ function ShowPage() {
 			.catch((error) => {
 				console.error("Error fetching resource:", error);
 			});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [index]);
+	}, [apiUrl, index]);
+
+	const handleDelete = () => {
+		fetch(`${apiUrl}/transactions/${index}`, {
+			method: "DELETE",
+		})
+			.then((response) => {
+				if (response.status === 200) {
+					navigate("/transactions");
+				} else {
+					console.error("Error deleting resource");
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
 
 	if (!resource) {
 		return <p>Loading...</p>;
@@ -33,6 +49,9 @@ function ShowPage() {
 			<p>Date: {resource.date}</p>
 			<p>From: {resource.from}</p>
 			<p>Category: {resource.category}</p>
+
+			<Link to={`/transactions/${index}/edit`}>Edit</Link>
+			<button onClick={handleDelete}>Delete</button>
 		</div>
 	);
 }
