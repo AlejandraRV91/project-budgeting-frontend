@@ -4,13 +4,17 @@
 
 This project is the frontend of a transaction management application that allows you to create, read, update, and delete transactions. It provides to the user an interface for interacting with the transaction API which was created for this project.
 
+## The Trello
+
+To access the project in Trello and view the boards, lists, and cards associated with the Project Budgeting App, please visit the [Project in trello](https://trello.com/b/FmrsFPPu/project-budgeting-app)
+
 ## The Backend
 
-The previously mentioned project can be seen through the following link, API: `https://github.com/AlejandraRV91/project-budgeting-backend`
+The previously mentioned project can be seen through the following link, API: [transaction API](https://github.com/AlejandraRV91/project-budgeting-backend)
 
 ## Deploy
 
-This project is temporarily deployed in: `https://glistening-frangollo-ae305a.netlify.app`
+This project is temporarily deployed in: [Deployed app in netlify](https://main--glistening-frangollo-ae305a.netlify.app/)
 
 ## Requirements
 
