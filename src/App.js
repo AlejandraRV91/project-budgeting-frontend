@@ -9,16 +9,19 @@ import IndexPage from "./components/IndexPage";
 import ShowPage from "./components/ShowPage";
 import NewTransactionPage from "./components/NewTransactionPage";
 import EditPage from "./components/EditPage";
+import WelcomePage from "./components/Welcome";
 
-import 'bootstrap/dist/css/bootstrap.css';
+
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
 	return (
 		<>
 			<BrowserRouter>
-				<Navbar />
+				<Navbar></Navbar>
 				<Routes>
 					<Route path="*" element={<NotFound />} />
+					<Route path="/" element={<WelcomePage></WelcomePage>}></Route>
 					<Route
 						path="/transactions"
 						element={<IndexPage></IndexPage>}></Route>

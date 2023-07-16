@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./IndexPage.css";
 
@@ -84,11 +84,12 @@ function IndexPage() {
 					<tbody>
 						{resources
 							.filter(
+								//when a category is selected in  the <select>, the method.filter will filter the elements of this category.
 								(resource) =>
 									selectedCategory === "" ||
 									resource.category === selectedCategory
 							)
-							.map((resource) => (
+							.map((resource) => ( //.map returns a row of the table for each element filtered previously
 								<tr key={resource.id}>
 									<td>{formatDate(resource.date)}</td>
 									<td>
