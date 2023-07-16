@@ -41,17 +41,26 @@ function ShowPage() {
 	}
 
 	return (
-		<div>
+		<div className="container">
 			<h2>Resource Details</h2>
-			<p>ID: {resource.id}</p>
-			<p>Item Name: {resource.item_name}</p>
-			<p>Amount: {resource.amount}</p>
-			<p>Date: {resource.date}</p>
-			<p>From: {resource.from}</p>
-			<p>Category: {resource.category}</p>
-
-			<Link to={`/transactions/${index}/edit`}>Edit</Link>
-			<button onClick={handleDelete}>Delete</button>
+			<div className="card">
+				<div className="card-body">
+					<p className="card-text">ID: {resource.id}</p>
+					<p className="card-text">Item Name: {resource.item_name}</p>
+					<p className="card-text">Amount: {resource.amount}</p>
+					<p className="card-text">Date: {resource.date}</p>
+					<p className="card-text">From: {resource.from}</p>
+					<p className="card-text">Category: {resource.category}</p>
+				</div>
+			</div>
+			<Link
+				to={`/transactions/${index}/edit`}
+				className="btn btn-primary">
+				Edit
+			</Link>
+			<button onClick={handleDelete} className="btn btn-danger">
+				Delete
+			</button>
 		</div>
 	);
 }

@@ -52,14 +52,15 @@ function IndexPage() {
 	}
 
 	return (
-		<div>
+		<div className="container" style={{ width: "70%" }}>
 			<h1>Index Page</h1>
 			<div className={`total-balance ${balanceClass}`}>
 				Total Balance: {totalBalance}
 			</div>
-			<div>
+			<div className="form-group">
 				<label htmlFor="categorySelect">Filter by Category:</label>
 				<select
+					className="form-control"
 					id="categorySelect"
 					value={selectedCategory}
 					onChange={(e) => setSelectedCategory(e.target.value)}>
@@ -71,34 +72,37 @@ function IndexPage() {
 					))}
 				</select>
 			</div>
-			<table>
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>Item Name</th>
-						<th>Amount</th>
-					</tr>
-				</thead>
-				<tbody>
-					{resources
-						.filter(
-							(resource) =>
-								selectedCategory === "" ||
-								resource.category === selectedCategory
-						)
-						.map((resource) => (
-							<tr key={resource.id}>
-								<td>{formatDate(resource.date)}</td>
-								<td>
-									<Link to={`/transactions/${resource.id}`}>
-										{resource.item_name}
-									</Link>
-								</td>
-								<td>{resource.amount}</td>
-							</tr>
-						))}
-				</tbody>
-			</table>
+			<div className="table-responsive">
+				<table className="table">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Item Name</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						{resources
+							.filter(
+								(resource) =>
+									selectedCategory === "" ||
+									resource.category === selectedCategory
+							)
+							.map((resource) => (
+								<tr key={resource.id}>
+									<td>{formatDate(resource.date)}</td>
+									<td>
+										<Link
+											to={`/transactions/${resource.id}`}>
+											{resource.item_name}
+										</Link>
+									</td>
+									<td>{resource.amount}</td>
+								</tr>
+							))}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	);
 }

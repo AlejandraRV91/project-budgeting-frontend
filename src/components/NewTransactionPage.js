@@ -9,7 +9,7 @@ function NewTransactionPage() {
 	const [date, setDate] = useState("");
 	const [from, setFrom] = useState("");
 	const [category, setCategory] = useState("");
-	const [isWithdrawal, setIsWithdrawal] = useState(false); 
+	const [isWithdrawal, setIsWithdrawal] = useState(false);
 	const apiUrl = process.env.REACT_APP_API_DEV;
 	const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function NewTransactionPage() {
 		const newResource = {
 			id,
 			item_name,
-			amount: isWithdrawal ? -Math.abs(amount) : Math.abs(amount), 
+			amount: isWithdrawal ? -Math.abs(amount) : Math.abs(amount),
 			date,
 			from,
 			category,
@@ -45,61 +45,81 @@ function NewTransactionPage() {
 	}
 
 	return (
-		<div>
+		<div className="container">
 			<h2>Create New Transaction</h2>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="item-name">Item Name:</label>
-				<input
-					id="item-name"
-					type="text"
-					value={item_name}
-					onChange={(e) => setItemName(e.target.value)}
-				/>
+				<div className="form-group">
+					<label htmlFor="item-name">Item Name:</label>
+					<input
+						id="item-name"
+						type="text"
+						className="form-control"
+						value={item_name}
+						onChange={(e) => setItemName(e.target.value)}
+					/>
+				</div>
 
-				<label htmlFor="amount">Amount:</label>
-				<input
-					id="amount"
-					type="number"
-					step=".1"
-					value={amount}
-					onChange={(e) => setAmount(e.target.value)}
-				/>
+				<div className="form-group">
+					<label htmlFor="amount">Amount:</label>
+					<input
+						id="amount"
+						type="number"
+						step=".1"
+						className="form-control"
+						value={amount}
+						onChange={(e) => setAmount(e.target.value)}
+					/>
+				</div>
 
-				<label htmlFor="date">Date:</label>
-				<input
-					id="date"
-					type="date"
-					value={date}
-					onChange={(e) => setDate(e.target.value)}
-				/>
+				<div className="form-group">
+					<label htmlFor="date">Date:</label>
+					<input
+						id="date"
+						type="date"
+						className="form-control"
+						value={date}
+						onChange={(e) => setDate(e.target.value)}
+					/>
+				</div>
 
-				<label htmlFor="from">From:</label>
-				<input
-					id="from"
-					type="text"
-					value={from}
-					onChange={(e) => setFrom(e.target.value)}
-				/>
+				<div className="form-group">
+					<label htmlFor="from">From:</label>
+					<input
+						id="from"
+						type="text"
+						className="form-control"
+						value={from}
+						onChange={(e) => setFrom(e.target.value)}
+					/>
+				</div>
 
-				<label htmlFor="category">Category:</label>
-				<input
-					id="category"
-					type="text"
-					value={category}
-					onChange={(e) => setCategory(e.target.value)}
-				/>
+				<div className="form-group">
+					<label htmlFor="category">Category:</label>
+					<input
+						id="category"
+						type="text"
+						className="form-control"
+						value={category}
+						onChange={(e) => setCategory(e.target.value)}
+					/>
+				</div>
 
-				<div>
+				<div className="form-group form-check">
 					<input
 						id="is-withdrawal"
 						type="checkbox"
+						className="form-check-input"
 						checked={isWithdrawal}
 						onChange={(e) => setIsWithdrawal(e.target.checked)}
 					/>
-					<label htmlFor="is-withdrawal">Withdrawal</label>
+					<label htmlFor="is-withdrawal" className="form-check-label">
+						Withdrawal
+					</label>
 				</div>
 
-				<button type="submit">Create</button>
+				<button type="submit" className="btn btn-primary">
+					Create
+				</button>
 			</form>
 		</div>
 	);

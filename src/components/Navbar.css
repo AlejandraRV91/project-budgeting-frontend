@@ -1,0 +1,14 @@
+nav{
+    background-image: url("../assets/Nav_img.png");
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(83, 83, 83);
+}

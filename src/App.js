@@ -10,6 +10,8 @@ import ShowPage from "./components/ShowPage";
 import NewTransactionPage from "./components/NewTransactionPage";
 import EditPage from "./components/EditPage";
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 function App() {
 	return (
 		<>

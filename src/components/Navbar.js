@@ -3,6 +3,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import "./Navbar.css"
+
 function Navbar() {
 	const [totalBalance, setTotalBalance] = useState(0);
 	const location = useLocation();
@@ -24,22 +26,23 @@ function Navbar() {
 					console.error("Error fetching resources:", error);
 				});
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location.pathname]);
 
 	return (
 		<nav>
-			<Link to="/transactions">
-				<span>Budget App</span>
+			<Link to="/transactions" className="navbar-brand">
+				Budget App
 			</Link>
 			{location.pathname.endsWith("/transactions") ? (
 				<></>
 			) : (
-				<div>Total Balance: {totalBalance}</div>
+				<div className="navbar-text">Total Balance: {totalBalance}</div>
 			)}
-			<Link to="/transactions/new">NEW TRANSACTION</Link>
+			<Link to="/transactions/new" className="btn btn-primary ml-auto">
+				NEW TRANSACTION
+			</Link>
 		</nav>
 	);
 }
-
 export default Navbar;
