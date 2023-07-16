@@ -4,6 +4,14 @@
 
 This project is the frontend of a transaction management application that allows you to create, read, update, and delete transactions. It provides a user interface for interacting with the transaction API.
 
+## The Backend
+
+This project was made to use the API: `https://github.com/AlejandraRV91/project-budgeting-backend`
+
+## Deploy
+
+This project is temporarily deployed in: `https://glistening-frangollo-ae305a.netlify.app`
+
 ## Requirements
 
 -   Node.js (version 18.16.0)
